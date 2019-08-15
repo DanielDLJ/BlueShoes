@@ -329,11 +329,13 @@ class MainActivity : AppCompatActivity(){
         replaceFragment( fragment )
     }
 
-    private fun getFragment( fragmentId: Long ) =
-        when( fragmentId ){
+    private fun getFragment( fragmentId: Long ): Fragment {
+        return when (fragmentId) {
             R.id.item_about.toLong() -> AboutFragment()
+            R.id.item_contact.toLong() -> ContactFragment()
             else -> AboutFragment()
         }
+    }
 
     private fun replaceFragment( fragment: Fragment){
         supportFragmentManager
