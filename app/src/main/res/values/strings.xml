@@ -107,10 +107,21 @@
 
     <string name="contact_frag_address_title">Endereço</string>
     <string name="ic_map_marker_desc">Ícone marcador de localização em map.</string>
-    <string name="contact_frag_address">Avenida Professora Izoraida Marques Peres, 401 &#8211; Parque Campolim, Sorocaba &#8211; SP, 18048&#8211;110</string>
-    <string name="contact_frag_address_formatted_to_google_maps">Avenida Professora Izoraida Marques Peres, 401 , Sorocaba, São Paulo, Brasil</string>
+    <string name="contact_frag_address">Avenida Professora Izoraida Marques Peres, 401 &#8211; Parque Campolim, Sorocaba
+        &#8211; SP, 18048&#8211;110
+    </string>
+    <string name="contact_frag_address_formatted_to_google_maps">Avenida Professora Izoraida Marques Peres, 401 ,
+        Sorocaba, São Paulo, Brasil
+    </string>
 
     <string name="info_google_maps_install">Instale o aplicativo do Google Maps.</string>
+
+
+    <!-- PrivacyPolicyFragment -->
+    <string name="privacy_policy_frag_title">Políticas de privacidade</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

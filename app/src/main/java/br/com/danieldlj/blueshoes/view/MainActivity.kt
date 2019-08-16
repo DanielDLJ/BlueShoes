@@ -333,6 +333,7 @@ class MainActivity : AppCompatActivity(){
         return when (fragmentId) {
             R.id.item_about.toLong() -> AboutFragment()
             R.id.item_contact.toLong() -> ContactFragment()
+            R.id.item_privacy_policy.toLong() -> PrivacyPolicyFragment()
             else -> AboutFragment()
         }
     }
