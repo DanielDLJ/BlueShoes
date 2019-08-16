@@ -1,5 +1,6 @@
 package br.com.danieldlj.blueshoes.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.design.widget.FloatingActionButton
@@ -25,6 +26,7 @@ import br.com.danieldlj.blueshoes.util.NavMenuItemDetailsLookup
 import br.com.danieldlj.blueshoes.util.NavMenuItemKeyProvider
 import br.com.danieldlj.blueshoes.util.NavMenuItemPredicate
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_user_logged.*
 import kotlinx.android.synthetic.main.nav_header_user_not_logged.*
@@ -35,10 +37,11 @@ class MainActivity : AppCompatActivity(){
 
     companion object {
         const val FRAGMENT_TAG = "frag-tag"
+        const val FRAGMENT_ID = "frag-id"
     }
 
 
-    val user = User("Daniel Leme Junior",R.drawable.user,true)
+    val user = User("Daniel Leme Junior",R.drawable.user,false)
 
     lateinit var navMenuItems : List<NavMenuItem>
     lateinit var selectNavMenuItems: SelectionTracker<Long>
@@ -118,7 +121,7 @@ class MainActivity : AppCompatActivity(){
             selectNavMenuItemsLogged.onRestoreInstanceState( savedInstanceState )
         }
         else{
-         /*   /*
+            /*
              * Verificando se há algum item ID em intent. Caso não,
              * utilize o ID do primeiro item.
              * */
@@ -133,8 +136,7 @@ class MainActivity : AppCompatActivity(){
              * ou o envio de um ID especifico de fragmento a ser aberto.
              * O primeiro item aqui é o de ID R.id.item_all_shoes.
              * */
-            selectNavMenuItems.select( fragId!!.toLong() )*/
-            selectNavMenuItems.select( R.id.item_all_shoes.toLong() )
+            selectNavMenuItems.select( fragId!!.toLong() )
 
 
         }
@@ -317,13 +319,19 @@ class MainActivity : AppCompatActivity(){
         val supFrag = supportFragmentManager
         var fragment = supFrag.findFragmentByTag( FRAGMENT_TAG )
 
-        /*
-         * Se não for uma reconstrução de atividade, então não
-         * haverá um fragmento em memória, então busca-se o
-         * inicial.
-         * */
         if( fragment == null ){
-            fragment = getFragment( R.id.item_about.toLong() )
+
+            /*
+             * Caso haja algum ID de fragmento em intent, então
+             * é este fragmento que deve ser acionado. Caso
+             * contrário, abra o fragmento comum de início.
+             * */
+            var fragId = intent?.getIntExtra( FRAGMENT_ID, 0 )
+            if( fragId == 0 ){
+                fragId = R.id.item_about
+            }
+
+            fragment = getFragment( fragId!!.toLong() )
         }
 
         replaceFragment( fragment )
@@ -343,6 +351,11 @@ class MainActivity : AppCompatActivity(){
             .beginTransaction()
             .replace(R.id.fl_fragment_container, fragment, FRAGMENT_TAG)
             .commit()
+    }
+
+    fun callLoginActivity( view: View ){
+        val intent = Intent( this, LoginActivity::class.java )
+        startActivity( intent )
     }
 
 
