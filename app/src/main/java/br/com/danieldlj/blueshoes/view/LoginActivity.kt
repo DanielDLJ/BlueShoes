@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.content_form.*
 import kotlinx.android.synthetic.main.content_login.*
 import kotlinx.android.synthetic.main.text_view_privacy_policy_login.*
 
-class LoginActivity : FormActivity(), TextView.OnEditorActionListener, KeyboardUtils.OnSoftInputChangedListener {
+class LoginActivity : FormActivity(), KeyboardUtils.OnSoftInputChangedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,7 +86,7 @@ class LoginActivity : FormActivity(), TextView.OnEditorActionListener, KeyboardU
         blockFields( true )
         isMainButtonSending( true )
         showProxy( true )
-        backEndFakeDelay()
+        backEndFakeDelay(false, getString(R.string.invalid_login))
     }
 
     override fun blockFields( status: Boolean ){
@@ -149,29 +149,9 @@ class LoginActivity : FormActivity(), TextView.OnEditorActionListener, KeyboardU
         constraintSet.applyTo( parent )
     }
 
-
-    private fun backEndFakeDelay(){
-        Thread{
-            kotlin.run {
-                /*
-                 * Simulando um delay de latência de
-                 * 1 segundo.
-                 * */
-                SystemClock.sleep( 1000 )
-
-                runOnUiThread {
-                    blockFields( false )
-                    isMainButtonSending( false )
-                    showProxy( false )
-
-                    snackBarFeedback(fl_form_container, false, getString( R.string.invalid_login ))
-                }
-            }
-        }.start()
-    }
-
     fun callForgotPasswordActivity( view: View ){
-        Toast.makeText(this, "callForgotPasswordActivity()", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, ForgotPasswordActivity::class.java)
+        startActivity( intent )
     }
 
     fun callSignUpActivity( view: View ){

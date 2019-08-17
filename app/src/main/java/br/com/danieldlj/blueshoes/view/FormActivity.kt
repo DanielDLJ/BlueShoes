@@ -3,6 +3,8 @@ package br.com.danieldlj.blueshoes.view
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.os.SystemClock
+import android.provider.ContactsContract
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
@@ -10,16 +12,18 @@ import android.support.v7.app.AppCompatActivity
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ImageSpan
+import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import br.com.danieldlj.blueshoes.R
 import kotlinx.android.synthetic.main.app_bar.*
+import kotlinx.android.synthetic.main.content_form.*
 import kotlinx.android.synthetic.main.proxy_screen.*
 
 
-abstract class FormActivity : AppCompatActivity() {
+abstract class FormActivity : AppCompatActivity(), TextView.OnEditorActionListener {
 
     override fun onCreate( savedInstanceState: Bundle? ) {
         super.onCreate( savedInstanceState )
@@ -46,6 +50,18 @@ abstract class FormActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    /*
+ * Caso o usuário toque no botão "Done" do teclado virtual
+ * ao invés de tocar no botão "Entrar". Mesmo assim temos
+ * de processar o formulário.
+ * */
+    override fun onEditorAction(view: TextView, actionId: Int, event: KeyEvent? ): Boolean {
+
+        mainAction()
+        return false
+    }
+
 
     /*
          * Apresenta a tela de bloqueio que diz ao usuário que
@@ -132,4 +148,24 @@ abstract class FormActivity : AppCompatActivity() {
      * do envio de dados.
      * */
     abstract fun isMainButtonSending( status: Boolean )
+
+    protected fun backEndFakeDelay(statusAction: Boolean, feedbackMessage: String){
+        Thread{
+            kotlin.run {
+                /*
+                 * Simulando um delay de latência de
+                 * 1 segundo.
+                 * */
+                SystemClock.sleep( 1000 )
+
+                runOnUiThread {
+                    blockFields( false )
+                    isMainButtonSending( false )
+                    showProxy( false )
+
+                    snackBarFeedback(fl_form_container, statusAction, feedbackMessage)
+                }
+            }
+        }.start()
+    }
 }

@@ -13,6 +13,7 @@ import android.widget.Toast
 
 import br.com.danieldlj.blueshoes.R
 import kotlinx.android.synthetic.main.fragment_contact.*
+import kotlinx.android.synthetic.main.info_block.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,6 +50,8 @@ class ContactFragment : Fragment(), View.OnClickListener {
 
         iv_address.setOnClickListener( this )
         tv_address.setOnClickListener( this )
+
+        tv_info_block.text = getString(R.string.contact_frag_info)
     }
 
 
