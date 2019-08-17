@@ -43,7 +43,7 @@ class ForgotPasswordActivity : FormActivity(), KeyboardUtils.OnSoftInputChangedL
         return false
     }
 
-    //Login
+    //Recuperar senha
     override fun mainAction( view: View? ){
         blockFields( true )
         isMainButtonSending( true )
