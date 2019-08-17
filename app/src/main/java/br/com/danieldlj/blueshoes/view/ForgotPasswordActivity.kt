@@ -2,14 +2,12 @@ package br.com.danieldlj.blueshoes.view
 
 import android.os.Bundle
 import android.view.KeyEvent
-import android.view.View
 import android.widget.TextView
 import br.com.danieldlj.blueshoes.R
 import br.com.danieldlj.blueshoes.util.isValidEmail
 import br.com.danieldlj.blueshoes.util.validate
 import com.blankj.utilcode.util.KeyboardUtils
 import kotlinx.android.synthetic.main.content_forgot_password.*
-import kotlinx.android.synthetic.main.content_form.*
 import kotlinx.android.synthetic.main.info_block.*
 
 
@@ -17,7 +15,6 @@ class ForgotPasswordActivity : FormActivity(), KeyboardUtils.OnSoftInputChangedL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        View.inflate(this, R.layout.content_forgot_password, fl_form)
 
         /*
          * Colocando configuração de validação de campo de email
@@ -31,6 +28,7 @@ class ForgotPasswordActivity : FormActivity(), KeyboardUtils.OnSoftInputChangedL
 
     }
 
+    override fun getLayoutResourceID() = R.layout.content_forgot_password
 
     /*
     * Caso o usuário toque no botão "Done" do teclado virtual
@@ -43,12 +41,11 @@ class ForgotPasswordActivity : FormActivity(), KeyboardUtils.OnSoftInputChangedL
         return false
     }
 
-    //Recuperar senha
-    override fun mainAction( view: View? ){
-        blockFields( true )
-        isMainButtonSending( true )
-        showProxy( true )
-        backEndFakeDelay(false, getString(R.string.invalid_login_email))
+    override fun backEndFakeDelay(){
+        backEndFakeDelay(
+            false,
+            getString( R.string.invalid_login_email )
+        )
     }
 
     override fun blockFields( status: Boolean ){

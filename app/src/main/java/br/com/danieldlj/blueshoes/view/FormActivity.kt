@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.SystemClock
-import android.provider.ContactsContract
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
@@ -41,7 +40,10 @@ abstract class FormActivity : AppCompatActivity(), TextView.OnEditorActionListen
          * layout.
          * */
         window.setBackgroundDrawableResource( R.drawable.bg_activity )
+        View.inflate(this, getLayoutResourceID(), fl_form)
     }
+
+    abstract fun getLayoutResourceID() : Int
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if( item.itemId == android.R.id.home ){
@@ -135,7 +137,12 @@ abstract class FormActivity : AppCompatActivity(), TextView.OnEditorActionListen
      * de dados. Algoritmo vinculado ao menos ao principal
      * botão em tela.
      * */
-    abstract fun mainAction( view: View? = null )
+    fun mainAction( view: View? = null ){
+        blockFields( true )
+        isMainButtonSending( true )
+        showProxy( true )
+        backEndFakeDelay()
+    }
 
     /*
      * Necessário para que os campos de formulário não possam
@@ -168,4 +175,7 @@ abstract class FormActivity : AppCompatActivity(), TextView.OnEditorActionListen
             }
         }.start()
     }
+
+    //Método único.
+    abstract fun backEndFakeDelay() : Unit
 }
