@@ -18,4 +18,8 @@
 
     <color name="colorFieldFocused">#F2F9FF</color>
     <color name="colorBackgroundProxy">#55FFFFFF</color>
+
+    <color name="colorTextBox">#EEEEEE</color>
+    <color name="colorLightGrey">#AAAAAA</color>
+    <color name="colorLighterGrey">#EFEFEF</color>
 </resources>
