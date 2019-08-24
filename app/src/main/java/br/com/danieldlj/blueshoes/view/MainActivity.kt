@@ -2,18 +2,13 @@ package br.com.danieldlj.blueshoes.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import androidx.appcompat.app.ActionBarDrawerToggle
 import android.view.MenuItem
-import android.support.v4.widget.DrawerLayout
-import android.support.design.widget.NavigationView
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.View
 import androidx.recyclerview.selection.SelectionTracker
@@ -27,7 +22,6 @@ import br.com.danieldlj.blueshoes.util.NavMenuItemKeyProvider
 import br.com.danieldlj.blueshoes.util.NavMenuItemPredicate
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar.*
-import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_user_logged.*
 import kotlinx.android.synthetic.main.nav_header_user_not_logged.*
 import kotlinx.android.synthetic.main.nav_menu.*
@@ -186,7 +180,7 @@ class MainActivity : AppCompatActivity(){
      * */
     private fun initNavMenuItemsLogged(){
         rv_menu_items_logged.setHasFixedSize( true )
-        rv_menu_items_logged.layoutManager = LinearLayoutManager( this )
+        rv_menu_items_logged.layoutManager = LinearLayoutManager(this)
         rv_menu_items_logged.adapter = NavMenuItemsAdapter( NavMenuItemsDataBase( this ).itemsLogged )
 
         initNavMenuItemsLoggedSelection()

@@ -2,8 +2,8 @@ package br.com.danieldlj.blueshoes.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.constraint.ConstraintLayout
-import android.support.constraint.ConstraintSet
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import android.view.View
 import br.com.danieldlj.blueshoes.R
 import com.blankj.utilcode.util.KeyboardUtils

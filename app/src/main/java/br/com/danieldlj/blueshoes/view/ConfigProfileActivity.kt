@@ -1,8 +1,8 @@
 package br.com.danieldlj.blueshoes.view
 
 import android.os.Bundle
-import android.support.constraint.ConstraintLayout
-import android.support.constraint.ConstraintSet
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import android.view.View
 import android.widget.Toast
 import br.com.danieldlj.blueshoes.R

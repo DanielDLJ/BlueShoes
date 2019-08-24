@@ -1,10 +1,10 @@
 package br.com.danieldlj.blueshoes.view
 
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
+import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.MenuItem
 import br.com.danieldlj.blueshoes.R
 import br.com.danieldlj.blueshoes.data.AccountSettingsItemsDataBase
@@ -41,7 +41,7 @@ class AccountSettingsActivity : AppCompatActivity() {
     private fun initItems(){
         rv_account_settings_items.setHasFixedSize( false )
 
-        val layoutManager = LinearLayoutManager( this )
+        val layoutManager = LinearLayoutManager(this)
         rv_account_settings_items.layoutManager = layoutManager
 
         val divider = DividerItemDecoration(this, layoutManager.getOrientation())

@@ -1,6 +1,6 @@
 package br.com.danieldlj.blueshoes.util
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.MotionEvent
 import androidx.recyclerview.selection.ItemDetailsLookup
 import br.com.danieldlj.blueshoes.view.NavMenuItemsAdapter
@@ -12,7 +12,7 @@ import br.com.danieldlj.blueshoes.view.NavMenuItemsAdapter
  * de ItemDetails que são submetidas a backup (ou extraídas)
  * de uma ocorrência de RecyclerView.ViewHolder.
  * */
-class NavMenuItemDetailsLookup( val rvMenuItems: RecyclerView) : ItemDetailsLookup<Long>() {
+class NavMenuItemDetailsLookup( val rvMenuItems: androidx.recyclerview.widget.RecyclerView) : ItemDetailsLookup<Long>() {
 
     /*
      * Retorna o ItemDetails para o item sob o evento
