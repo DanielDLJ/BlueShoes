@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(){
     }
 
 
-    val user = User("Daniel Leme Junior",R.drawable.user,true)
+    val user = User("Daniel Leme Junior",R.drawable.user,false)
 
     lateinit var navMenuItems : List<NavMenuItem>
     lateinit var selectNavMenuItems: SelectionTracker<Long>
@@ -407,6 +407,11 @@ class MainActivity : AppCompatActivity(){
 
     fun callLoginActivity( view: View ){
         val intent = Intent( this, LoginActivity::class.java )
+        startActivity( intent )
+    }
+
+    fun callSignUpActivity( view: View ){
+        val intent = Intent(this, SignUpActivity::class.java)
         startActivity( intent )
     }
 

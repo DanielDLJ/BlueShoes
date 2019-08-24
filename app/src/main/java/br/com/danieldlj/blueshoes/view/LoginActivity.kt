@@ -11,6 +11,7 @@ import br.com.danieldlj.blueshoes.R
 import br.com.danieldlj.blueshoes.util.isValidEmail
 import br.com.danieldlj.blueshoes.util.isValidPassword
 import br.com.danieldlj.blueshoes.util.validate
+import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.ScreenUtils
 
 import kotlinx.android.synthetic.main.content_login.*
@@ -95,9 +96,17 @@ class LoginActivity : FormEmailAndPasswordActivity(){
         startActivity( intent )
     }
 
-    fun callSignUpActivity( view: View ){
-        val intent = Intent(this, SignUpActivity::class.java)
-        startActivity( intent )
+    fun callSignUpActivity( view: View ) {
+        /*
+          * Para evitar que tenhamos mais de uma
+          * SignUpActivity na pilha de atividades.
+          * */
+        if (ActivityUtils.isActivityExistsInStack(SignUpActivity::class.java)) {
+            finish()
+        } else {
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 
