@@ -1,3 +1,9 @@
 package br.com.danieldlj.blueshoes.domain
 
-class AccountSettingItem(val label: String, val description: String)
+import br.com.danieldlj.blueshoes.view.FormActivity
+
+class AccountSettingItem(
+    val label: String,
+    val description: String,
+    val activityClass: Class<out FormActivity>
+)

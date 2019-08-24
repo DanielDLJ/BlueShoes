@@ -23,7 +23,7 @@ class AccountSettingsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled( true )
         supportActionBar?.setDisplayShowHomeEnabled( true )
 
-        val user = intent.getParcelableExtra<User>( User.KEY )
+        val user = getUser()
         tv_user_connected.text = String.format("%s %s", getString( R.string.connected ), user.name)
 
         initItems()
@@ -50,5 +50,7 @@ class AccountSettingsActivity : AppCompatActivity() {
 
         rv_account_settings_items.adapter = AccountSettingsItemsAdapter(AccountSettingsItemsDataBase.getItems( this ))
     }
+
+    fun getUser() = intent.getParcelableExtra<User>( User.KEY )
 
 }

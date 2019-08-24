@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(){
     }
 
 
-    val user = User("Daniel Leme Junior",R.drawable.user,false)
+    val user = User("Daniel Leme Junior",R.drawable.user,true)
 
     lateinit var navMenuItems : List<NavMenuItem>
     lateinit var selectNavMenuItems: SelectionTracker<Long>
