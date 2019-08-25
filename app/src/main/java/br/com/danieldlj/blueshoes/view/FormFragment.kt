@@ -9,11 +9,9 @@ import android.os.SystemClock
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ImageSpan
-import android.view.KeyEvent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
@@ -23,6 +21,7 @@ import br.com.danieldlj.blueshoes.util.isValidPassword
 import br.com.danieldlj.blueshoes.util.validate
 import com.blankj.utilcode.util.ColorUtils
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_form.*
 import kotlinx.android.synthetic.main.proxy_screen.*
 
 abstract class FormFragment : Fragment(), TextView.OnEditorActionListener {
@@ -178,6 +177,23 @@ abstract class FormFragment : Fragment(), TextView.OnEditorActionListener {
         }.start()
     }
 
+    /*
+     * Método necessário para atualizar o ViewGroup
+     * fl_form, que é container dos layouts de formulários
+     * carregados em fragment_form, deixando ele
+     * pronto para receber uma lista de itens ou formulários
+     * que têm os próprios padding e posicionamento.
+     * */
+    fun updateFlFormToFullFreeScreen(){
+
+        fl_form.setPadding( 0,0,0,0 )
+
+        val layoutParams = (fl_form.layoutParams as FrameLayout.LayoutParams)
+        layoutParams.gravity = Gravity.NO_GRAVITY
+        layoutParams.width = FrameLayout.LayoutParams.MATCH_PARENT
+        layoutParams.height = FrameLayout.LayoutParams.MATCH_PARENT
+    }
+
 
     /*
      * Método responsável por invocar o Dialog de password antes
@@ -185,7 +201,7 @@ abstract class FormFragment : Fragment(), TextView.OnEditorActionListener {
      * alguns formulários críticos onde parte da validação é a
      * verificação da senha.
      * */
-    protected fun callPasswordDialog(){
+     fun callPasswordDialog(){
 
         val builder = AlertDialog.Builder( activity!! )
         val inflater = activity!!.layoutInflater

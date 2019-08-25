@@ -1,4 +1,4 @@
-package br.com.danieldlj.blueshoes.view.config.connectiondata
+package br.com.danieldlj.blueshoes.view.config.creditcard
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -8,7 +8,7 @@ import br.com.danieldlj.blueshoes.R
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_tabs_user_config.*
 
-class ConfigConnectionDataActivity : AppCompatActivity() {
+class ConfigCreditCardsActivity : AppCompatActivity() {
 
     override fun onCreate( savedInstanceState: Bundle? ) {
         super.onCreate( savedInstanceState )
@@ -27,10 +27,9 @@ class ConfigConnectionDataActivity : AppCompatActivity() {
          * */
         window.setBackgroundDrawableResource( R.drawable.bg_activity )
 
-        // Criando o adaptador de fragmentos que ficarão expostos no ViewPager.
-        val sectionsPagerAdapter = ConfigConnectionDataSectionsAdapter(this, supportFragmentManager)
+        //Criando o adaptador de fragmentos que ficarão expostos no ViewPager.
+        val sectionsPagerAdapter = ConfigCreditCardsSectionsAdapter(this, supportFragmentManager)
 
-        // Acessando o ViewPager e vinculando o adaptador de  fragmentos a ele.
         val viewPager: ViewPager = findViewById( R.id.view_pager )
         viewPager.adapter = sectionsPagerAdapter
 
@@ -43,10 +42,7 @@ class ConfigConnectionDataActivity : AppCompatActivity() {
         tabs.setupWithViewPager( viewPager )
     }
 
-    /*
-     * Para permitir que o back button tenha a ação de volta para
-     * a atividade anterior.
-     * */
+    //Para permitir que o back button tenha a ação de volta para a atividade anterior.
     override fun onOptionsItemSelected( item: MenuItem): Boolean {
 
         if( item.itemId == android.R.id.home ){
