@@ -1,9 +1,9 @@
 package br.com.danieldlj.blueshoes.domain
 
-import br.com.danieldlj.blueshoes.view.FormActivity
+import androidx.appcompat.app.AppCompatActivity
 
 class AccountSettingItem(
     val label: String,
     val description: String,
-    val activityClass: Class<out FormActivity>
+    val activityClass: Class<out AppCompatActivity>
 )
