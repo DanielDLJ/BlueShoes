@@ -4,14 +4,10 @@ import android.os.Bundle
 import br.com.danieldlj.blueshoes.R
 import br.com.danieldlj.blueshoes.util.isValidEmail
 import br.com.danieldlj.blueshoes.util.validate
-import br.com.danieldlj.blueshoes.view.FormFragment
+import br.com.danieldlj.blueshoes.view.config.ConfigFormFragment
 import kotlinx.android.synthetic.main.fragment_config_email.*
 
-class ConfigEmailFragment : FormFragment() {
-
-    companion object{
-        const val TAB_TITLE = R.string.config_connection_data_tab_email
-    }
+class FormEmailFragment : ConfigFormFragment() {
 
     override fun getLayoutResourceID() = R.layout.fragment_config_email
 
@@ -50,6 +46,8 @@ class ConfigEmailFragment : FormFragment() {
 
         et_new_email_confirm.setOnEditorActionListener( this )
     }
+
+    override fun title() = R.string.config_connection_data_tab_email
 
     override fun backEndFakeDelay(){
         backEndFakeDelay(false, getString( R.string.invalid_sign_up_email ))

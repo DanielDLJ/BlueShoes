@@ -5,7 +5,7 @@ import br.com.danieldlj.blueshoes.R
 import br.com.danieldlj.blueshoes.domain.DeliveryAddress
 import kotlinx.android.synthetic.main.fragment_config_new_delivery_address.*
 
-class ConfigUpdateDeliveryAddressFragment : ConfigNewDeliveryAddressFragment() {
+class FormUpdateDeliveryAddressFragment : FormNewDeliveryAddressFragment() {
 
     override fun getLayoutResourceID() = R.layout.fragment_config_update_delivery_address
 

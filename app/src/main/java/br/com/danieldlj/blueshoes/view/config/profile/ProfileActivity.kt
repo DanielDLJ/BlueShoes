@@ -1,4 +1,4 @@
-package br.com.danieldlj.blueshoes.view
+package br.com.danieldlj.blueshoes.view.config.profile
 
 import android.app.Activity
 import android.content.Intent
@@ -8,10 +8,10 @@ import android.os.Bundle
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import android.view.View
-import android.widget.Toast
 import br.com.danieldlj.blueshoes.R
 import br.com.danieldlj.blueshoes.domain.User
 import br.com.danieldlj.blueshoes.util.validate
+import br.com.danieldlj.blueshoes.view.FormActivity
 import com.blankj.utilcode.util.ColorUtils
 import com.blankj.utilcode.util.KeyboardUtils
 import com.blankj.utilcode.util.ScreenUtils
@@ -21,7 +21,7 @@ import com.nguyenhoanglam.imagepicker.model.Image
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.ImagePicker
 import kotlinx.android.synthetic.main.content_config_profile.*
 
-class ConfigProfileActivity : FormActivity(), KeyboardUtils.OnSoftInputChangedListener {
+class ProfileActivity : FormActivity(), KeyboardUtils.OnSoftInputChangedListener {
 
     override fun onCreate( savedInstanceState: Bundle? ) {
         super.onCreate( savedInstanceState )

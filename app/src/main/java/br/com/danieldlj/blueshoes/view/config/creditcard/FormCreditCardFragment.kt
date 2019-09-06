@@ -5,15 +5,12 @@ import android.view.View
 import br.com.danieldlj.blueshoes.R
 import br.com.danieldlj.blueshoes.util.isValidCNPJ
 import br.com.danieldlj.blueshoes.util.isValidCPF
-import br.com.danieldlj.blueshoes.view.FormFragment
+import br.com.danieldlj.blueshoes.view.config.ConfigFormFragment
 import com.santalu.maskedittext.MaskEditText
 import kotlinx.android.synthetic.main.fragment_config_new_credit_card.*
 
-class ConfigNewCreditCardFragment : FormFragment(), View.OnFocusChangeListener {
+class FormCreditCardFragment : ConfigFormFragment(), View.OnFocusChangeListener {
 
-    companion object{
-        const val TAB_TITLE = R.string.config_credit_cards_tab_new
-    }
 
     override fun getLayoutResourceID() = R.layout.fragment_config_new_credit_card
 
@@ -35,6 +32,8 @@ class ConfigNewCreditCardFragment : FormFragment(), View.OnFocusChangeListener {
         et_credit_card_security_code.setOnEditorActionListener( this )
         met_credit_card_owner_reg.setOnFocusChangeListener( this )
     }
+
+    override fun title() = R.string.config_credit_cards_tab_new
 
     override fun backEndFakeDelay(){
         backEndFakeDelay(false, getString( R.string.invalid_credit_card ))

@@ -2,14 +2,12 @@ package br.com.danieldlj.blueshoes.view.config.deliveryaddress
 
 import android.os.Bundle
 import br.com.danieldlj.blueshoes.R
-import br.com.danieldlj.blueshoes.view.FormFragment
+import br.com.danieldlj.blueshoes.view.config.ConfigFormFragment
 import kotlinx.android.synthetic.main.fragment_config_new_delivery_address.*
 
-open class ConfigNewDeliveryAddressFragment : FormFragment() {
+open class FormNewDeliveryAddressFragment : ConfigFormFragment() {
 
     companion object{
-        const val TAB_TITLE = R.string.config_delivery_address_tab_new
-
         /*
          * A constante abaixo representa a posição
          * deste fragmento no ViewPager. Os
@@ -18,6 +16,8 @@ open class ConfigNewDeliveryAddressFragment : FormFragment() {
          * */
         const val PAGER_POS = 1
     }
+
+    override fun title() = R.string.config_delivery_address_tab_new
 
     override fun getLayoutResourceID() = R.layout.fragment_config_new_delivery_address
 

@@ -1,4 +1,4 @@
-package br.com.danieldlj.blueshoes.view.config.deliveryaddress
+package br.com.danieldlj.blueshoes.view.config
 
 import android.content.Context
 import androidx.fragment.app.FragmentManager
@@ -14,11 +14,15 @@ import androidx.fragment.app.FragmentPagerAdapter
  * eles possam ser utilizados novamente, isso enquanto houver
  * caminho de volta a eles (transição entre Tabs, por exemplo).
  */
-class ConfigDeliveryAddressesSectionsAdapter(val context: Context, fm: FragmentManager) : FragmentPagerAdapter( fm ) {
+class ConfigSectionsAdapter(
+    private val context: Context,
+    fm: FragmentManager,
+    private vararg val fragments: ConfigFormFragment) : FragmentPagerAdapter( fm ) {
 
     companion object{
         const val TOTAL_PAGES = 2
-        const val HOST_DELIVERY_ADDRESSES_PAGE_POS = 0
+        const val FIRST_PAGE_POS = 0
+        const val SECOND_PAGE_POS = 1
     }
 
     /*
@@ -26,19 +30,17 @@ class ConfigDeliveryAddressesSectionsAdapter(val context: Context, fm: FragmentM
      * fragmento correspondendo a posição (seção/página)
      * informada.
      * */
-    override fun getItem( position: Int ) = when( position ){
-        HOST_DELIVERY_ADDRESSES_PAGE_POS ->
-            ConfigDeliveryAddressHostFragment()
-        else ->
-            ConfigNewDeliveryAddressFragment()
+    override fun getItem( position: Int )
+            = when( position ){
+        FIRST_PAGE_POS -> fragments[ FIRST_PAGE_POS ]
+        else -> fragments[ SECOND_PAGE_POS ]
     }
 
-    override fun getPageTitle( position: Int ) = context.getString(
+    override fun getPageTitle( position: Int )
+            = context.getString(
         when( position ){
-            HOST_DELIVERY_ADDRESSES_PAGE_POS ->
-                ConfigDeliveryAddressesListFragment.TAB_TITLE
-            else ->
-                ConfigNewDeliveryAddressFragment.TAB_TITLE
+            FIRST_PAGE_POS -> fragments[ FIRST_PAGE_POS ].title()
+            else -> fragments[ SECOND_PAGE_POS ].title()
         }
     )
 

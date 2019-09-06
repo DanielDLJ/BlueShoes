@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import br.com.danieldlj.blueshoes.R
+import br.com.danieldlj.blueshoes.view.config.ConfigFormFragment
 
 /*
  * Fragmento com responsabilidade de ser o fragmento
@@ -13,7 +13,9 @@ import br.com.danieldlj.blueshoes.R
  * fácil alternância de fragmentos dentro de uma mesma
  * tela de ViewPager.
  * */
-class ConfigDeliveryAddressHostFragment : Fragment() {
+class DeliveryAddressHostFragment : ConfigFormFragment() {
+
+    override fun title() = DeliveryAddressesListFragment.TAB_TITLE
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
 
@@ -37,9 +39,17 @@ class ConfigDeliveryAddressHostFragment : Fragment() {
              * de fragmentos.
              * */
             transaction
-                .replace(R.id.fl_root, ConfigDeliveryAddressesListFragment())
+                .replace(R.id.fl_root, DeliveryAddressesListFragment())
                 .commit()
         }
         return view
     }
+
+    override fun getLayoutResourceID() = 0
+
+    override fun backEndFakeDelay() {}
+
+    override fun blockFields(status: Boolean) {}
+
+    override fun isMainButtonSending(status: Boolean) {}
 }

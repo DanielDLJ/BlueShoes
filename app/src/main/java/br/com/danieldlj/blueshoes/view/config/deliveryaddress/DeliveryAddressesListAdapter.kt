@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.danieldlj.blueshoes.R
 import br.com.danieldlj.blueshoes.domain.DeliveryAddress
 
-class ConfigDeliveryAddressesListItemsAdapter(private val fragment : ConfigDeliveryAddressesListFragment,
-                                              private val items: MutableList<DeliveryAddress>) :
-    RecyclerView.Adapter<ConfigDeliveryAddressesListItemsAdapter.ViewHolder>() {
+class DeliveryAddressesListAdapter(private val fragment : DeliveryAddressesListFragment,
+                                   private val items: MutableList<DeliveryAddress>) :
+    RecyclerView.Adapter<DeliveryAddressesListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, type: Int): ViewHolder {
 
@@ -97,7 +97,7 @@ class ConfigDeliveryAddressesListItemsAdapter(private val fragment : ConfigDeliv
 
         private fun toRemove( position: Int ){
 
-            fragment.callbacksToRemoveItem(
+            fragment.callbacksToChangeItem(
                 {
                     status ->
                         btUpdate.isEnabled = !status
@@ -125,7 +125,7 @@ class ConfigDeliveryAddressesListItemsAdapter(private val fragment : ConfigDeliv
     }
     private fun toUpdate( position: Int ){
 
-        val updateFrag = ConfigUpdateDeliveryAddressFragment()
+        val updateFrag = FormUpdateDeliveryAddressFragment()
 
         //Colocando como dado de transição o item selecionado para atualização.
         val bundle = Bundle()

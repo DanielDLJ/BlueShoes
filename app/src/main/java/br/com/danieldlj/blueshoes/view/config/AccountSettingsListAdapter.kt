@@ -1,4 +1,4 @@
-package br.com.danieldlj.blueshoes.view
+package br.com.danieldlj.blueshoes.view.config
 
 import android.content.Intent
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +10,7 @@ import br.com.danieldlj.blueshoes.R
 import br.com.danieldlj.blueshoes.domain.AccountSettingItem
 import br.com.danieldlj.blueshoes.domain.User
 
-class AccountSettingsItemsAdapter(private val items: List<AccountSettingItem>) : RecyclerView.Adapter<AccountSettingsItemsAdapter.ViewHolder>() {
+class AccountSettingsListAdapter(private val items: List<AccountSettingItem>) : RecyclerView.Adapter<AccountSettingsListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, type: Int ): ViewHolder {
 

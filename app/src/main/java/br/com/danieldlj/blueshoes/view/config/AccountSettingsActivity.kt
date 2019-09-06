@@ -1,4 +1,4 @@
-package br.com.danieldlj.blueshoes.view
+package br.com.danieldlj.blueshoes.view.config
 
 import android.os.Bundle
 import androidx.core.content.ContextCompat
@@ -48,7 +48,8 @@ class AccountSettingsActivity : AppCompatActivity() {
         divider.setDrawable(ContextCompat.getDrawable(this, R.drawable.light_grey_divider_line)!!)
         rv_account_settings_items.addItemDecoration( divider )
 
-        rv_account_settings_items.adapter = AccountSettingsItemsAdapter(AccountSettingsItemsDataBase.getItems( this ))
+        rv_account_settings_items.adapter =
+            AccountSettingsListAdapter(AccountSettingsItemsDataBase.getItems(this))
     }
 
     fun getUser() = intent.getParcelableExtra<User>( User.KEY )

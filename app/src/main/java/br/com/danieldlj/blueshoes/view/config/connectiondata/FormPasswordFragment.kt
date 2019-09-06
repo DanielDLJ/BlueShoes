@@ -4,15 +4,11 @@ import android.os.Bundle
 import br.com.danieldlj.blueshoes.R
 import br.com.danieldlj.blueshoes.util.isValidPassword
 import br.com.danieldlj.blueshoes.util.validate
-import br.com.danieldlj.blueshoes.view.FormFragment
+import br.com.danieldlj.blueshoes.view.config.ConfigFormFragment
 import kotlinx.android.synthetic.main.fragment_config_password.*
 
 
-class ConfigPasswordFragment : FormFragment() {
-
-    companion object{
-        const val TAB_TITLE = R.string.config_connection_data_tab_password
-    }
+class FormPasswordFragment : ConfigFormFragment() {
 
     override fun getLayoutResourceID() = R.layout.fragment_config_password
 
@@ -42,6 +38,8 @@ class ConfigPasswordFragment : FormFragment() {
 
         et_new_password_confirm.setOnEditorActionListener( this )
     }
+
+    override fun title() = R.string.config_connection_data_tab_password
 
     override fun backEndFakeDelay(){
         backEndFakeDelay(false, getString( R.string.invalid_password ))

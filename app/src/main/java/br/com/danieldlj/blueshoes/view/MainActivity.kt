@@ -20,6 +20,7 @@ import br.com.danieldlj.blueshoes.domain.User
 import br.com.danieldlj.blueshoes.util.NavMenuItemDetailsLookup
 import br.com.danieldlj.blueshoes.util.NavMenuItemKeyProvider
 import br.com.danieldlj.blueshoes.util.NavMenuItemPredicate
+import br.com.danieldlj.blueshoes.view.config.AccountSettingsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar.*
 import kotlinx.android.synthetic.main.nav_header_user_logged.*
