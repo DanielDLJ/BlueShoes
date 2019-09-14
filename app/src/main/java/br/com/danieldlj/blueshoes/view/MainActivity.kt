@@ -21,6 +21,7 @@ import br.com.danieldlj.blueshoes.util.NavMenuItemDetailsLookup
 import br.com.danieldlj.blueshoes.util.NavMenuItemKeyProvider
 import br.com.danieldlj.blueshoes.util.NavMenuItemPredicate
 import br.com.danieldlj.blueshoes.view.config.AccountSettingsActivity
+import br.com.danieldlj.blueshoes.view.shoes.AllShoesListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar.*
 import kotlinx.android.synthetic.main.nav_header_user_logged.*
@@ -215,14 +216,14 @@ class MainActivity : AppCompatActivity(){
         (rv_menu_items_logged.adapter as NavMenuItemsAdapter).selectionTracker = selectNavMenuItemsLogged
     }
 
-    override fun onSaveInstanceState( outState: Bundle? ) {
+    override fun onSaveInstanceState( outState: Bundle ) {
         super.onSaveInstanceState( outState )
 
         /*
          * Para manter o item de menu gaveta selecionado caso
          * haja reconstrução de atividade.
          * */
-        selectNavMenuItems.onSaveInstanceState( outState!! )
+        selectNavMenuItems.onSaveInstanceState( outState )
         selectNavMenuItemsLogged.onSaveInstanceState( outState )
     }
 
@@ -309,8 +310,9 @@ class MainActivity : AppCompatActivity(){
              * */
             var fragId = intent?.getIntExtra( FRAGMENT_ID, 0 )
             if( fragId == 0 ){
-                fragId = R.id.item_about
+                fragId = R.id.item_all_shoes
             }
+
 
             fragment = getFragment( fragId!!.toLong() )
         }
@@ -323,7 +325,7 @@ class MainActivity : AppCompatActivity(){
             R.id.item_about.toLong() -> AboutFragment()
             R.id.item_contact.toLong() -> ContactFragment()
             R.id.item_privacy_policy.toLong() -> PrivacyPolicyFragment()
-            else -> AboutFragment()
+            else -> AllShoesListFragment()
         }
     }
 
